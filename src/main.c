@@ -10,18 +10,6 @@
 
 #include "pstat/pstat.h"
 
-#define UL unsigned long 
-#define WAITTIME 1
-
-void free_list(struct pstat *head);
-int read_stat_by_increment(FILE*, char *, int, void*);
-double get_total_cpu_work();
-double get_total_cpu_jiffies();
-double get_curr_cpu(double, double, double);
-struct pstat *find_entry_by_pid(struct pstat *head, int pid);
-struct pstat *sort(struct pstat *);
-struct pstat *get_all_ps();
-
 int main (int argc, char **argv) {
     
     // get system clock hertz
@@ -59,25 +47,24 @@ int main (int argc, char **argv) {
             pstotal += cpu;
             update->cpu_usage = cpu; 
         }
-
-        struct winsize w;
-        ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-
         psafter = sort(psafter);
         ptr = psafter;
+
         printf("%-6s %-40s %4s\n","PID", "Name", "%CPU");
         puts("-----------------------------------------------------");
 
+        struct winsize w;
+        ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
         int t_rows = w.ws_row-4;
-        while (ptr != NULL && t_rows--) {
+        while (ptr != NULL && t_rows-- > 0) {
             printf("%-6d %-40s %5.2f\n", ptr->pid, ptr->comm, ptr->cpu_usage);
             ptr = ptr->next;
         }
         printf("total: %f%%\n", cpuratio*100);
+
         free_list(psbefore);
         free_list(psafter);
     }
-
     return 0;
 }
 

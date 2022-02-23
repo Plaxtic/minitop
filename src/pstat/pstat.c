@@ -25,15 +25,11 @@ struct pstat *get_all_ps() {
     char statpath[275] = {0};
     while((dent = readdir(proc)) != NULL) {
         if (dent->d_type == DT_DIR && isdigit(dent->d_name[0])) {
-
             snprintf(statpath, 274, "/%s/%s/%s", "proc", dent->d_name, "stat");
+            
             struct pstat *ps = get_pstat(statpath);
-
-            if (ps == NULL) 
-                perror("get_pstat");
-            else {
+            if (ps != NULL) 
                 ps->next = pslst, pslst = ps;
-            }
 
             memset(statpath, 0, 20);
         }
@@ -44,50 +40,49 @@ struct pstat *get_all_ps() {
 }
 
 struct pstat *sort(struct pstat *head) {
+    if (head == NULL)
+        return NULL;
 
     struct pstat *curr = head;
     struct pstat *idx = NULL;
     struct pstat *tmp = NULL;
     struct pstat *prev1 = NULL;
 
-    if (curr == NULL)
-        return 0;
+    while (curr != NULL)  {
+        idx = curr->next;
+        struct pstat *prev2 = NULL;
 
-    else {
-        while (curr != NULL)  {
-            idx = curr->next;
-            struct pstat *prev2 = NULL;
+        while (idx != NULL) {
+            if (curr->cpu_usage < idx->cpu_usage) {
+                if (prev1 != NULL)
+                    prev1->next = idx;
+                else 
+                    head = idx;
 
-            while (idx != NULL) {
-                if (curr->cpu_usage < idx->cpu_usage) {
-                    if (prev1 != NULL)
-                        prev1->next = idx;
-                    else 
-                        head = idx;
+                if (prev2 != NULL) {
+                    prev2->next = curr;
 
-                    if (prev2 != NULL) {
-                        prev2->next = curr;
-
-                        tmp = idx->next;
-                        idx->next = curr->next;
-                        curr->next = tmp;
-                    }
-                    else {
-                        // prevent loop with idx->idx
-                        curr->next = idx->next;  
-                        idx->next = curr;
-                    }
-                    // swap pointers
-                    tmp = idx;
-                    idx = curr;
-                    curr = tmp;
+                    tmp = idx->next;
+                    idx->next = curr->next;
+                    curr->next = tmp;
                 }
-                prev2 = idx;
-                idx = idx->next;
+                else {
+
+                    // prevent loop with idx->idx
+                    curr->next = idx->next;  
+                    idx->next = curr;
+                }
+
+                // swap pointers
+                tmp = idx;
+                idx = curr;
+                curr = tmp;
             }
-            prev1 = curr;
-            curr = curr->next;
+            prev2 = idx;
+            idx = idx->next;
         }
+        prev1 = curr;
+        curr = curr->next;
     }
     return head;
 }
@@ -148,11 +143,12 @@ struct pstat *get_pstat(char *path) {
     struct pstat *pst = malloc(sizeof(struct pstat));
     FILE *fp = fopen(path, "r");
 
-    if (fp == NULL)
+    if (fp == NULL || pst == NULL)
         return NULL;
 
     fscanf(fp, "%d (%255[^)])", &pst->pid, pst->comm);
 
+    // parse process name
     char c;
     if ((c = fgetc(fp)) != ' ') {
         int i = strlen(pst->comm);
@@ -162,57 +158,57 @@ struct pstat *get_pstat(char *path) {
         } while ((c = fgetc(fp)) != ' ');
     }
 
-    fscanf(fp, "%c %d %d %d %d %d %u %lu %lu %lu %lu %lu %lu %ld %ld %ld %ld %ld %ld %llu %lu %ld %lu %lu %lu %lu %lu %lu %lu %lu %lu %lu %lu %lu %lu %d %d %u %u %llu %lu %ld %lu %lu %lu %lu %lu %lu %lu %d",
-            &pst->state,
-            &pst->ppid,
-            &pst->pgrp,
-            &pst->session,
-            &pst->tty_nr,
-            &pst->tpgid,
-            &pst->flags,
-            &pst->minflt,
-            &pst->cminflt,
-            &pst->majflt,
-            &pst->cmajflt,
-            &pst->utime,
-            &pst->stime, 
-            &pst->cutime,
-            &pst->cstime, 
-            &pst->priority, 
-            &pst->nice, 
-            &pst->num_threads, 
-            &pst->itrealvalue, 
-            &pst->starttime, 
-            &pst->vsize,
-            &pst->rss,
-            &pst->rsslim,
-            &pst->startcode, 
-            &pst->endcode,
-            &pst->startstack, 
-            &pst->kstkesp,
-            &pst->kstkeip, 
-            &pst->signal, 
-            &pst->blocked, 
-            &pst->sigignore, 
-            &pst->sigcatch, 
-            &pst->wchan,
-            &pst->nswap,
-            &pst->cnswap, 
-            &pst->exit_signal,
-            &pst->processor,
-            &pst->rt_priority,
-            &pst->policy,
-            &pst->delayacct_blkio_ticks, 
-            &pst->guest_time, 
-            &pst->cguest_time, 
-            &pst->start_data,
-            &pst->end_data, 
-            &pst->start_brk, 
-            &pst->arg_start, 
-            &pst->arg_end,
-            &pst->env_start, 
-            &pst->env_end, 
-            &pst->exit_code);
+    // fill up massive struct (very inefficient)
+    fscanf(fp, STATFORMAT, &pst->state,
+                           &pst->ppid,
+                           &pst->pgrp,
+                           &pst->session,
+                           &pst->tty_nr,
+                           &pst->tpgid,
+                           &pst->flags,
+                           &pst->minflt,
+                           &pst->cminflt,
+                           &pst->majflt,
+                           &pst->cmajflt,
+                           &pst->utime,
+                           &pst->stime, 
+                           &pst->cutime,
+                           &pst->cstime, 
+                           &pst->priority, 
+                           &pst->nice, 
+                           &pst->num_threads, 
+                           &pst->itrealvalue, 
+                           &pst->starttime, 
+                           &pst->vsize,
+                           &pst->rss,
+                           &pst->rsslim,
+                           &pst->startcode, 
+                           &pst->endcode,
+                           &pst->startstack, 
+                           &pst->kstkesp,
+                           &pst->kstkeip, 
+                           &pst->signal, 
+                           &pst->blocked, 
+                           &pst->sigignore, 
+                           &pst->sigcatch, 
+                           &pst->wchan,
+                           &pst->nswap,
+                           &pst->cnswap, 
+                           &pst->exit_signal,
+                           &pst->processor,
+                           &pst->rt_priority,
+                           &pst->policy,
+                           &pst->delayacct_blkio_ticks, 
+                           &pst->guest_time, 
+                           &pst->cguest_time, 
+                           &pst->start_data,
+                           &pst->end_data, 
+                           &pst->start_brk, 
+                           &pst->arg_start, 
+                           &pst->arg_end,
+                           &pst->env_start, 
+                           &pst->env_end, 
+                           &pst->exit_code);
 
     fclose(fp);
 

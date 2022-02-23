@@ -10,6 +10,13 @@
 #define WAITTIME 1
 #define UL unsigned long 
 
+#define STATFORMAT "%c %d %d %d %d %d %u %lu \
+%lu %lu %lu %lu %lu %ld %ld %ld \
+%ld %ld %ld %llu %lu %ld %lu %lu \
+%lu %lu %lu %lu %lu %lu %lu %lu \
+%lu %lu %lu %d %d %u %u %llu %lu \
+%ld %lu %lu %lu %lu %lu %lu %lu %d"
+
 struct pstat {
     int pid;                        // (1)
     char comm[255];                 // (2) The filename of the executable, in parentheses.

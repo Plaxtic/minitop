@@ -1,0 +1,85 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/funk/Plaxtic/minitop/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+STAT	src/pstat/pstat.h	/^#define STAT /;"	d
+STATFORMAT	src/pstat/pstat.h	/^#define STATFORMAT /;"	d
+SYSCALLS_H	src/pstat/pstat.c	/^#define SYSCALLS_H$/;"	d	file:
+UL	src/main.c	/^#define UL /;"	d	file:
+UL	src/pstat/pstat.h	/^#define UL /;"	d
+UPTIME	src/pstat/pstat.h	/^#define UPTIME /;"	d
+WAITTIME	src/main.c	/^#define WAITTIME /;"	d	file:
+WAITTIME	src/pstat/pstat.h	/^#define WAITTIME /;"	d
+arg_end	src/pstat/pstat.h	/^    long unsigned arg_end;                          \/\/ (49) Address below program command-line/;"	m	struct:pstat	typeref:typename:long unsigned
+arg_start	src/pstat/pstat.h	/^    long unsigned arg_start;                        \/\/ (48) Address above which program comman/;"	m	struct:pstat	typeref:typename:long unsigned
+blocked	src/pstat/pstat.h	/^    long unsigned blocked;          \/\/ (32) OBSOLETE $/;"	m	struct:pstat	typeref:typename:long unsigned
+cguest_time	src/pstat/pstat.h	/^    long int cguest_time;                           \/\/ (44) Guest time of the process's childr/;"	m	struct:pstat	typeref:typename:long int
+cmajflt	src/pstat/pstat.h	/^    long unsigned cmajflt;          \/\/ (13) The number of major faults that the process's wait/;"	m	struct:pstat	typeref:typename:long unsigned
+cminflt	src/pstat/pstat.h	/^    long unsigned cminflt;          \/\/ (11) The number of minor faults that the process's wait/;"	m	struct:pstat	typeref:typename:long unsigned
+cnswap	src/pstat/pstat.h	/^    long unsigned cnswap;           \/\/ (37) Cumulative nswap for child processes (not maintain/;"	m	struct:pstat	typeref:typename:long unsigned
+comm	src/pstat/pstat.h	/^    char comm[255];                 \/\/ (2) The filename of the executable, in parentheses.$/;"	m	struct:pstat	typeref:typename:char[255]
+cpu_usage	src/pstat/pstat.h	/^    double cpu_usage;$/;"	m	struct:pstat	typeref:typename:double
+cstime	src/pstat/pstat.h	/^    long int cstime;                \/\/ (17) Amount of time this process's waited-for children /;"	m	struct:pstat	typeref:typename:long int
+cutime	src/pstat/pstat.h	/^    long int cutime;                \/\/ (16) Amount of time this process's waited-for children /;"	m	struct:pstat	typeref:typename:long int
+delayacct_blkio_ticks	src/pstat/pstat.h	/^    long long unsigned delayacct_blkio_ticks;       \/\/ (42) Aggregated block I\/O delays, meas/;"	m	struct:pstat	typeref:typename:long long unsigned
+end_data	src/pstat/pstat.h	/^    long unsigned end_data;                         \/\/ (46) Address below which program initia/;"	m	struct:pstat	typeref:typename:long unsigned
+endcode	src/pstat/pstat.h	/^    long unsigned endcode;          \/\/ (27) The address below which program text can run.$/;"	m	struct:pstat	typeref:typename:long unsigned
+env_end	src/pstat/pstat.h	/^    long unsigned env_end;                          \/\/ (51) Address below which program enviro/;"	m	struct:pstat	typeref:typename:long unsigned
+env_start	src/pstat/pstat.h	/^    long unsigned env_start;                        \/\/ (50) Address above which program enviro/;"	m	struct:pstat	typeref:typename:long unsigned
+exit_code	src/pstat/pstat.h	/^    int exit_code;                                  \/\/ (52) The thread's exit status in the fo/;"	m	struct:pstat	typeref:typename:int
+exit_signal	src/pstat/pstat.h	/^    int exit_signal;                \/\/ (38) Signal to be sent to parent when we die.$/;"	m	struct:pstat	typeref:typename:int
+find_entry_by_pid	src/pstat/pstat.c	/^struct pstat *find_entry_by_pid(struct pstat *head, int pid) {$/;"	f	typeref:struct:pstat *
+flags	src/pstat/pstat.h	/^    unsigned flags;                 \/\/ (9) The kernel flags word of the process. For bit meani/;"	m	struct:pstat	typeref:typename:unsigned
+free_list	src/pstat/pstat.c	/^void free_list(struct pstat *head) {$/;"	f	typeref:typename:void
+get_all_ps	src/pstat/pstat.c	/^struct pstat *get_all_ps() {$/;"	f	typeref:struct:pstat *
+get_curr_cpu	src/pstat/pstat.c	/^double get_curr_cpu(double utime, double stime, double seconds) {$/;"	f	typeref:typename:double
+get_pstat	src/pstat/pstat.c	/^struct pstat *get_pstat(char *path) {$/;"	f	typeref:struct:pstat *
+get_total_cpu_jiffies	src/pstat/pstat.c	/^double get_total_cpu_jiffies() {$/;"	f	typeref:typename:double
+get_total_cpu_work	src/pstat/pstat.c	/^double get_total_cpu_work() {$/;"	f	typeref:typename:double
+guest_time	src/pstat/pstat.h	/^    long unsigned guest_time;                       \/\/ (43) Guest time of the process, measure/;"	m	struct:pstat	typeref:typename:long unsigned
+hertz	src/pstat/pstat.c	/^double hertz;$/;"	v	typeref:typename:double
+itrealvalue	src/pstat/pstat.h	/^    long int itrealvalue;           \/\/ (21) The time in jiffies before the next SIGALRM is sen/;"	m	struct:pstat	typeref:typename:long int
+kstkeip	src/pstat/pstat.h	/^    long unsigned kstkeip;          \/\/ (30) The current EIP (instruction pointer).$/;"	m	struct:pstat	typeref:typename:long unsigned
+kstkesp	src/pstat/pstat.h	/^    long unsigned kstkesp;          \/\/ (29) The current value of ESP (stack pointer), as found/;"	m	struct:pstat	typeref:typename:long unsigned
+main	src/main.c	/^int main (int argc, char **argv) {$/;"	f	typeref:typename:int
+majflt	src/pstat/pstat.h	/^    long unsigned majflt;           \/\/ (12) The number of major faults the process has made wh/;"	m	struct:pstat	typeref:typename:long unsigned
+minflt	src/pstat/pstat.h	/^    long unsigned minflt;           \/\/ (10) The number of minor faults the process has made wh/;"	m	struct:pstat	typeref:typename:long unsigned
+minitop	README.md	/^# minitop$/;"	c
+next	src/pstat/pstat.h	/^    struct pstat *next;$/;"	m	struct:pstat	typeref:struct:pstat *
+nice	src/pstat/pstat.h	/^    long int nice;                  \/\/ (19) The nice value (see setpriority(2)), a value in th/;"	m	struct:pstat	typeref:typename:long int
+nswap	src/pstat/pstat.h	/^    long unsigned nswap;            \/\/ (36) Number of pages swapped (not maintained).$/;"	m	struct:pstat	typeref:typename:long unsigned
+num_threads	src/pstat/pstat.h	/^    long int num_threads;           \/\/ (20) Number of threads in this process$/;"	m	struct:pstat	typeref:typename:long int
+pgrp	src/pstat/pstat.h	/^    int pgrp;                       \/\/ (5) The process group ID of the process.$/;"	m	struct:pstat	typeref:typename:int
+pid	src/pstat/pstat.h	/^    int pid;                        \/\/ (1)$/;"	m	struct:pstat	typeref:typename:int
+policy	src/pstat/pstat.h	/^    unsigned policy;                \/\/ (41) Scheduling policy (see sched_setscheduler(2)). Dec/;"	m	struct:pstat	typeref:typename:unsigned
+ppid	src/pstat/pstat.h	/^    int ppid;                       \/\/ (4) The PID of the parent of this process.$/;"	m	struct:pstat	typeref:typename:int
+priority	src/pstat/pstat.h	/^    long int priority;              \/\/ (18)$/;"	m	struct:pstat	typeref:typename:long int
+processor	src/pstat/pstat.h	/^    int processor;                  \/\/ (39) CPU number last executed on.$/;"	m	struct:pstat	typeref:typename:int
+pstat	src/pstat/pstat.h	/^struct pstat {$/;"	s
+rss	src/pstat/pstat.h	/^    long int rss;                   \/\/ (24)$/;"	m	struct:pstat	typeref:typename:long int
+rsslim	src/pstat/pstat.h	/^    long unsigned rsslim;           \/\/ (25) Current soft limit in bytes on the rss of the proc/;"	m	struct:pstat	typeref:typename:long unsigned
+rt_priority	src/pstat/pstat.h	/^    unsigned rt_priority;           \/\/ (40) Real-time scheduling priority, a number in the ran/;"	m	struct:pstat	typeref:typename:unsigned
+session	src/pstat/pstat.h	/^    int session;                    \/\/ (6) The session ID of the process.$/;"	m	struct:pstat	typeref:typename:int
+sigcatch	src/pstat/pstat.h	/^    long unsigned sigcatch;         \/\/ (34) OBSOLETE $/;"	m	struct:pstat	typeref:typename:long unsigned
+sigignore	src/pstat/pstat.h	/^    long unsigned sigignore;        \/\/ (33) OBSOLETE $/;"	m	struct:pstat	typeref:typename:long unsigned
+signal	src/pstat/pstat.h	/^    long unsigned signal;           \/\/ (31) OBSOLETE $/;"	m	struct:pstat	typeref:typename:long unsigned
+sort	src/pstat/pstat.c	/^struct pstat *sort(struct pstat *head) {$/;"	f	typeref:struct:pstat *
+start_brk	src/pstat/pstat.h	/^    long unsigned start_brk;                        \/\/ (47) Address above which program heap c/;"	m	struct:pstat	typeref:typename:long unsigned
+start_data	src/pstat/pstat.h	/^    long unsigned start_data;                       \/\/ (45) Address above which program initia/;"	m	struct:pstat	typeref:typename:long unsigned
+startcode	src/pstat/pstat.h	/^    long unsigned startcode;        \/\/ (26) The address above which program text can run.$/;"	m	struct:pstat	typeref:typename:long unsigned
+startstack	src/pstat/pstat.h	/^    long unsigned startstack;       \/\/ (28) The address of the start (i.e., bottom) of the sta/;"	m	struct:pstat	typeref:typename:long unsigned
+starttime	src/pstat/pstat.h	/^    long long unsigned starttime;   \/\/ (22) The time the process started after system boot. Th/;"	m	struct:pstat	typeref:typename:long long unsigned
+state	src/pstat/pstat.h	/^    char state;                     \/\/ (3) One of the following characters, indicating process/;"	m	struct:pstat	typeref:typename:char
+stime	src/pstat/pstat.h	/^    long unsigned stime;            \/\/ (15) Amount of time this process has been scheduled in /;"	m	struct:pstat	typeref:typename:long unsigned
+tpgid	src/pstat/pstat.h	/^    int tpgid;                      \/\/ (8) The ID of the foreground process group of the contr/;"	m	struct:pstat	typeref:typename:int
+tty_nr	src/pstat/pstat.h	/^    int tty_nr;                     \/\/ (7) The controlling terminal of the process. $/;"	m	struct:pstat	typeref:typename:int
+utime	src/pstat/pstat.h	/^    long unsigned utime;            \/\/ (14) Amount of time this process has been scheduled in /;"	m	struct:pstat	typeref:typename:long unsigned
+vsize	src/pstat/pstat.h	/^    long unsigned vsize;            \/\/ (23) Virtual memory size in bytes.$/;"	m	struct:pstat	typeref:typename:long unsigned
+wchan	src/pstat/pstat.h	/^    long unsigned wchan;            \/\/ (35) This is the "channel" in which the process is wait/;"	m	struct:pstat	typeref:typename:long unsigned
